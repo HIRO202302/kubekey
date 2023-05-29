@@ -7,7 +7,7 @@ ARG DIR=${OS}${OS_VERSION}-${TARGETARCH}-rpms
 
 RUN yum install -q -y ${BUILD_TOOLS} \
     && yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo \
-    && yum makecache
+    && yum makecache && yum install -y ebtables socat ipset conntrack
 
 WORKDIR package
 COPY packages.yaml .
